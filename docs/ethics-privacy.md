@@ -1,0 +1,4 @@
+- No raw webcam images stored
+- No audio recordings stored
+- Only emotion labels + confidence saved
+- Session data anonymizable
