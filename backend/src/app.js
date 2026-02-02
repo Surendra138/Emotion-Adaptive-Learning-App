@@ -9,8 +9,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 
-app.get('/health', (req, res) => {
-    res.json({ status: "backend is running!" });
-});
 
 export default app;
