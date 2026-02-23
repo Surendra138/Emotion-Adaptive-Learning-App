@@ -1,0 +1,27 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Animated Dark Gradient Background ===== */
+body {
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+
+  background: linear-gradient(
+    -45deg,
+    #0f172a,
+    #1e293b,
+    #111827,
+    #1f2937
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 14s ease infinite;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

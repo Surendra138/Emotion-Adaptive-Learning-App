@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import "./auth.css";
 
 export default function Login() {
     const { login } = useAuth();
@@ -22,32 +23,36 @@ export default function Login() {
 
 
     return (
-        <div>
-            <h2>Login</h2>
+        <div className="auth-page">
+        <div className="auth-container">
+            <h2 className="auth-title">Login</h2>
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="auth-error">{error}</p>}
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="auth-form">
                 <input 
+                    className="auth-input"
                     type="email" 
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <br /><br />
+                
                 <input 
+                    className="auth-input"
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <br /><br />
-                <button type="submit">Login</button>
+                
+                <button type="submit" className="auth-button">Login</button>
             </form>
 
-            <p>
+            <p className="auth-footer">
                 No account? <Link to="/register">Register</Link>
             </p>
+        </div>
         </div>
     );
 };

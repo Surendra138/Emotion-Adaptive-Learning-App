@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+import "./auth.css";
 
 export default function Register() {
     const { register } = useAuth();
@@ -24,42 +25,47 @@ export default function Register() {
     };
 
     return (
-        <div>
-            <h2>Register</h2>
+        <div className="auth-page">
+        <div className="auth-container">
+            <h2 className="auth-title">Register</h2>
 
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <p className="auth-error">{error}</p>}
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="auth-form">
                 <input 
+                    className="auth-input"
                     type="name" 
                     placeholder="Name"
                     value={form.name}
                     onChange={(e) => setForm({...form, name: e.target.value})}
                     required
                 />
-                <br /><br />
+                
                 <input 
+                    className="auth-input"
                     type="email" 
                     placeholder="Email"
                     value={form.email}
                     onChange={(e) => setForm({...form, email: e.target.value})}
                     required
                 />
-                <br /><br />
+                
                 <input 
+                    className="auth-input"
                     type="password" 
                     placeholder="Password"
                     value={form.password}
                     onChange={(e) => setForm({...form, password: e.target.value})}
                     required
                 />
-                <br /><br />
-                <button type="submit">Register</button>
+                
+                <button type="submit" className="auth-button">Register</button>
             </form>
 
-            <p>
+            <p className="auth-footer">
                 Already have account? <Link to="/login">Login</Link>
             </p>
+        </div>
         </div>
     );
 };

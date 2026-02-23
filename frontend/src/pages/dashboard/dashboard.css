@@ -1,0 +1,263 @@
+/* ===============================
+   MAIN CONTAINER
+================================ */
+
+.dashboard-container {
+  width: 92%;
+  margin: 40px auto;
+  padding: 50px 70px;
+
+  border-radius: 30px;
+
+  background: rgba(10, 15, 30, 0.75);
+  backdrop-filter: blur(30px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.6);
+
+  background: linear-gradient(
+  to bottom,
+  rgba(20, 25, 45, 0.9),
+  rgba(10, 15, 30, 0.85)
+  );  
+}
+
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.navbar h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 18px rgba(99, 102, 241, 0.25);
+}
+
+.logout-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: rgba(31, 41, 55, 0.8);
+  color: #f9fafb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #374151;
+}
+
+
+/* ===============================
+   WELCOME SECTION
+================================ */
+
+.welcome {
+  margin-bottom: 40px;
+}
+
+.welcome h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.welcome p {
+  color: #94a3b8;
+  font-size: 15px;
+}
+
+
+/* ===============================
+   GRID SECTION (TOP CARDS)
+================================ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.card {
+  padding: 30px;
+  border-radius: 20px;
+
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+  0 20px 40px rgba(0, 0, 0, 0.5),
+  0 0 0 1px rgba(255,255,255,0.04);
+
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #9ca3af;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.primary-btn,
+.card button {
+  margin-top: 15px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-btn:hover,
+.card button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.4);
+}
+
+.secondary-btn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #374151;
+  background: rgba(31, 41, 55, 0.8);
+  color: #f9fafb;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  background: #374151;
+}
+
+
+/* ===============================
+   COURSES SECTION
+================================ */
+
+.courses-section {
+  margin-top: 20px;
+}
+
+.courses-section h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.course-card {
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 18px;
+
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+  0 20px 40px rgba(0, 0, 0, 0.5),
+  0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.course-card p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.course-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.courses-section h2,
+.card h3 {
+  color: #e5e7eb;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+
+/* ===============================
+   PROGRESS BAR
+================================ */
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  background: #1f2937;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.5s ease;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .dashboard-container {
+    padding: 40px 25px;
+  }
+}
+
+/* MODES */
+body.dark {
+  background: #0f172a;
+  color: white;
+}
+
+body.light {
+  background: #f1f5f9;
+  color: white;
+}
