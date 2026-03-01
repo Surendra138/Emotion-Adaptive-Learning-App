@@ -2,45 +2,41 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import "./dashboard.css";
 import { getAllCourses } from "../../api/course.api";
+import EmotionCapture from "../../components/EmotionCapture";
 
 export default function Dashboard() {
     const { user, logout } = useAuth();
 
-    const [theme, setTheme] = useState("dark");
+    const [theme, setTheme] = useState("light");
     const [emotion, setEmotion] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [confidence, setConfidence] = useState(null);
     const [courses, setCourses] = useState([]);
-    const [error, setError] = useState(null);
 
     const lastLesson = {
         course: "Data Structures",
         lesson: "Recursion Basics",
     };
 
-    const fetchEmotion = async () => {
-        try {
-            const res = await fetch("/api/emotion/analyze");
-            const data = await res.json();
-            setEmotion(data);
-        } catch (err) {
-            setError("Failed to analyze emotion");
-        } finally {
-            setLoading(false);
-        }
+    const emotionEmoji = {
+        happy: "😄",
+        sad: "😢",
+        angry: "😠",
+        fear: "😨",
+        surprise: "😲",
+        disgust: "🤢",
+        neutral: "😐"
     };
 
     const fetchCourses = async () => {
         try {
             const res = await getAllCourses();
             setCourses(res.data);
-            console.log(res.data);
         } catch (error) {
             console.error("Error fetching courses:", error);
         }
     }
 
     useEffect(() => {
-        fetchEmotion();
         fetchCourses();
         document.body.className = theme;
     }, [theme]);
@@ -79,22 +75,22 @@ export default function Dashboard() {
                 <div className="card">
                     <h3>Your Current Emotion</h3>
 
-                    {loading && <p>Analyzing your emotion...</p>}
+                    <div className="emotion-wrapper">
+                        <EmotionCapture
+                            onEmotionDetected={setEmotion}
+                            onConfidenceDetected={setConfidence}
+                        />
 
-                    {error && (
-                    <>
-                        <p className="card-error">{error}</p>
-                        <button onClick={fetchEmotion}>Retry</button>
-                    </>
-                    )}
-
-                    {!loading && !error && emotion && (
-                    <>
-                        <h2>{emotion.emotion}</h2>
-                        <p>Confidence: {(emotion.confidence * 100).toFixed(0)}%</p>
-                        <button onClick={fetchEmotion}>Analyze Again</button>
-                    </>
-                    )}
+                        {emotion && (
+                            <div className="emotion-info">
+                                <h2>Emotion: {emotion}</h2>
+                                <p>Confidence: {confidence}%</p>
+                                <h2>
+                                    {emotionEmoji[emotion?.toLowerCase()] || "😐"} {emotion}
+                                </h2>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 {/* ===== CONTINUE LEARNING CARD ===== */}
@@ -117,10 +113,10 @@ export default function Dashboard() {
                         <div className="progress-bar">
                             <div
                                 className="progress-fill"
-                                style={{ width: `${!course.progress_percentage && 0}%` }}
+                                style={{ width: `${course.progress_percentage || 0}%` }}
                             ></div>
                         </div>
-                        <p>{!course.progress_percentage && 0}% Completed</p>
+                        <p>{course.progress_percentage || 0}% Completed</p>
                         <button className="secondary-btn">Resume</button>
                     </div>
                 ))}

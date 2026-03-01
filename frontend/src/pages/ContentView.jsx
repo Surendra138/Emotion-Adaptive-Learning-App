@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getContentById } from "../api/content.api.js";
 import { startSession, endSession, logInteraction } from "../api/session.api.js";
-import { detectEmotion } from "../api/emotion.api.js";
 
 
 const ContentView = () => {
@@ -32,7 +31,7 @@ const ContentView = () => {
         if(!sessionId) return;
 
         await endSession(sessionId);
-        await detectEmotion(sessionId);
+        
 
         navigate(`/recommend/${id}`);
     };
