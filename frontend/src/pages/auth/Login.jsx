@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./auth.css";
 
 export default function Login() {
-    const { login } = useAuth();
+    const { login, user } = useAuth();
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ export default function Login() {
         e.preventDefault();
         try {
             await login({ email, password });
-            navigate("/");
+            navigate("/");   
         } catch (err) {
             setError(err.response?.data?.error || "Login failed");
         }

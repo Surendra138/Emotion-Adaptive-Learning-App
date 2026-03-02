@@ -7,7 +7,6 @@ import EmotionCapture from "../../components/EmotionCapture";
 export default function Dashboard() {
     const { user, logout } = useAuth();
 
-    const [theme, setTheme] = useState("light");
     const [emotion, setEmotion] = useState(null);
     const [confidence, setConfidence] = useState(null);
     const [courses, setCourses] = useState([]);
@@ -38,12 +37,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         fetchCourses();
-        document.body.className = theme;
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme(prev => prev === "dark" ? "light" : "dark");
-    };
+    }, []);
 
     return (
         <div className="dashboard-container">
@@ -52,10 +46,6 @@ export default function Dashboard() {
             <div className="navbar">
                 <h2>Emotion Adaptive Learning</h2>
                 <div className="nav-actions">
-                    <button className="theme-btn" onClick={toggleTheme}>
-                        {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
-                    </button>
-
                     <button className="logout-btn" onClick={logout}>
                         Logout
                     </button>

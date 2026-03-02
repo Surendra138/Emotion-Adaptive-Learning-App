@@ -1,27 +1,73 @@
+
 /* ===== Global Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+*, *::before, *::after { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+} 
+
+
+/* ===== Base Layout (Applies to Admin & User Pages) ===== */ 
+
+html, body { 
+  height: 100%; 
+} 
+
+body { 
+  min-height: 100vh; 
+  font-family: "Inter", sans-serif; 
+  line-height: 1.6; 
+  -webkit-font-smoothing: antialiased; 
+  text-rendering: optimizeLegibility; 
+  /* Animated Dark Gradient Background */ 
+  background: linear-gradient( -45deg, #0f172a, #1e293b, #111827, #1f2937 ); 
+  background-size: 400% 400%; 
+  animation: gradientMove 14s ease infinite; 
+  display: flex; flex-direction: column; 
+} 
+
+
+/* ===== Root Wrapper ===== */ 
+
+#root { 
+  flex: 1; 
+  width: 100%; 
+  min-height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+} 
+
+
+/* ===== Page Wrapper (Use this in both Admin & User Layouts) ===== */ /* Add this class to main container inside admin/user layout */ 
+
+.page-wrapper { 
+  flex: 1; 
+  width: 100%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  padding: 24px; 
+  display: flex; 
+  flex-direction: column; 
 }
 
-/* ===== Animated Dark Gradient Background ===== */
-body {
-  min-height: 100vh;
-  font-family: "Inter", sans-serif;
 
-  background: linear-gradient(
-    -45deg,
-    #0f172a,
-    #1e293b,
-    #111827,
-    #1f2937
-  );
-  background-size: 400% 400%;
-  animation: gradientMove 14s ease infinite;
-}
+/* ===== Responsive Global Spacing ===== */
 
-#root {
-  width: 100%;
-  min-height: 100vh;
+@media (max-width: 1024px) { 
+  .page-wrapper { 
+    padding: 20px; 
+  } 
+} 
+
+@media (max-width: 768px) { 
+  .page-wrapper { 
+    padding: 16px; 
+  } 
+} 
+
+@media (max-width: 480px) { 
+  .page-wrapper { 
+    padding: 12px; 
+  } 
 }

@@ -5,6 +5,7 @@ import sessionRoutes from "./routes/sessionRoutes.js";
 import emotionRoutes from './routes/emotionRoutes.js';
 import adaptiveRoutes from "./routes/adaptiveRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.use("/sessions", sessionRoutes);
 router.use("/emotion", emotionRoutes);
 router.use("/adaptive", adaptiveRoutes);
 router.use("/courses", courseRoutes);
+router.use("/admin", adminRoutes);
 
 export default router;

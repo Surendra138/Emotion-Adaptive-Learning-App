@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./auth.css";
 
 export default function Register() {
-    const { register } = useAuth();
+    const { register, user } = useAuth();
     const navigate = useNavigate();
 
     const [form, setForm] = useState({
@@ -18,7 +18,11 @@ export default function Register() {
         e.preventDefault();
         try {
             await register(form);
-            navigate("/");
+            if(user.role === 'student') {
+                navigate("/");
+            } else {
+                navigate("/admin");
+            }
         } catch (err) {
             setError(err.response?.data?.error || "Registration failed");
         }

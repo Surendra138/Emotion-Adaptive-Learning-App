@@ -13,7 +13,7 @@ export const registerUser = async(name, email, password) => {
 
     // save user to db
     const result = await pool.query(
-        'INSERT INTO users (name, password_hash, email) VALUES ($1, $2, $3) RETURNING id, name, email',
+        'INSERT INTO users (name, password_hash, email) VALUES ($1, $2, $3) RETURNING id, name, email, role',
         [name, hash, email]
     );
 
@@ -48,5 +48,5 @@ export const loginUser = async(email, password) => {
         expiresIn: "7d"
     });
 
-    return { user: { id: user.id, email: user.email, name: user.name }, token };
+    return { user: { id: user.id, email: user.email, name: user.name, role: user.role }, token };
 };

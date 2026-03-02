@@ -5,10 +5,40 @@ import Register from "./pages/auth/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import ContentView from "./pages/ContentView";
 import Recommendation from "./pages/Recommendation";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminCourseContent from "./pages/admin/AdminCourseContent";
+import AdminCourses from "./pages/admin/adminCourses";
 
 function PrivateRoute({ children }) {
     const { user } = useAuth();
-    return user ? children : <Navigate to="/login" />;
+
+    if(user) {
+      const role = user.role;
+      if(role === 'student') {
+        return children;
+      } else {
+        return <Navigate to='/admin'/>;
+      }
+    } else {
+      return <Navigate to='/login'/>
+    }
+    
+}
+
+
+function AdminRoute({ children }) {
+    const { user } = useAuth();
+
+    if(user) {
+      const role = user.role;
+      if(role === 'admin') {
+        return children;
+      } else {
+        return <Navigate to='/'/>;
+      }
+    } else {
+        return <Navigate to='/login'/>
+    }
 }
 
 function App() {
@@ -44,6 +74,34 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        <Route 
+          path="/admin" 
+          element={
+            <AdminRoute>
+              <AdminDashboard />
+            </AdminRoute>
+          }
+        />
+
+        <Route 
+          path="/admin/courses" 
+          element={
+            <AdminRoute>
+              <AdminCourses />
+            </AdminRoute>
+          } 
+        />
+
+        <Route
+          path="/admin/courses/:courseId"
+          element={
+            <AdminRoute>
+              <AdminCourseContent />
+            </AdminRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

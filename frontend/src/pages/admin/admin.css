@@ -1,0 +1,350 @@
+/* ===============================
+   ADMIN CONTAINER
+================================ */
+
+.admin-container {
+  padding: 40px;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+.admin-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ===============================
+   GLASS CARD
+================================ */
+
+.admin-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 25px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(96, 165, 250, 0.3);
+}
+
+
+/* ===============================
+   HEADER ROW
+================================ */
+
+.admin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+
+/* ===============================
+   INPUTS
+================================ */
+
+.admin-form-group {
+  margin-bottom: 18px;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.admin-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 12px rgba(96, 165, 250, 0.5);
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.admin-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 14px;
+}
+
+/* Primary */
+.admin-btn-primary {
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  color: white;
+}
+
+.admin-btn-primary:hover {
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Secondary */
+.admin-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+}
+
+.admin-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Danger */
+.admin-btn-danger {
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.admin-btn-danger:hover {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+  transform: translateY(-2px);
+}
+
+
+/* ===============================
+   LIST STYLE
+================================ */
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: 0.3s ease;
+}
+
+.admin-list-item:hover {
+  background: rgba(96, 165, 250, 0.1);
+  transform: translateX(5px);
+}
+
+.admin-list-title {
+  font-weight: 500;
+  font-size: 15px;
+  color: #e2e8f0;
+}
+
+.admin-list-actions {
+  display: flex;
+  gap: 10px;
+}
+
+
+/* ===============================
+   ADMIN PANEL CENTER STYLE
+================================ */
+
+.admin-panel {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.admin-action-group {
+  margin-top: 20px;
+}
+
+
+/* ===============================
+   CENTER PAGE LAYOUT
+================================ */
+
+.admin-page-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.admin-container-centered {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ===============================
+   TITLE CENTERED
+================================ */
+
+.admin-title-centered {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* ===============================
+   LOGOUT POSITION
+================================ */
+
+.admin-logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* ===============================
+   SMOOTH ANIMATIONS
+================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-card,
+.admin-list-item {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* =========================================
+   LARGE TABLETS (≤ 1024px)
+========================================= */
+@media (max-width: 1024px) {
+  .admin-container {
+    padding: 30px;
+  }
+
+  .admin-title {
+    font-size: 28px;
+  }
+
+  .admin-card {
+    padding: 22px;
+  }
+}
+
+
+/* =========================================
+   TABLETS (≤ 768px)
+========================================= */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 25px 20px;
+  }
+
+  .admin-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .admin-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .admin-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-list-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .admin-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* =========================================
+   MOBILE (≤ 480px)
+========================================= */
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 20px 15px;
+  }
+
+  .admin-title {
+    font-size: 20px;
+  }
+
+  .admin-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .admin-input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .admin-btn {
+    padding: 9px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .admin-list-item {
+    padding: 14px;
+  }
+
+  .admin-list-title {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE (≤ 360px)
+========================================= */
+@media (max-width: 360px) {
+  .admin-title {
+    font-size: 18px;
+  }
+
+  .admin-card {
+    padding: 15px;
+  }
+
+  .admin-btn {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
